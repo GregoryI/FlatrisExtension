@@ -144,7 +144,7 @@ class FlatrisGame extends ComponentTree.Component {
       e.preventDefault();
     }
     // Ignore user events when game is stopped or paused
-    if (!this.state.playing || this.state.paused || this.refs.well.state.disableActions) {
+    if (!this.state.playing || this.state.paused) {
       return;
     }
 
@@ -233,13 +233,11 @@ class FlatrisGame extends ComponentTree.Component {
       return;
     }
 
-    // this.setState({dropAcceleration: false})
-    // this.setState({disableActions: false})
-
-    this.refs.well.setState({
-      dropAcceleration: false,
-      disableActions: false
-    });
+    // Uncomment to have the animation while dropping    
+    // this.refs.well.setState({
+    //   dropAcceleration: false,
+    //   disableActions: false
+    // });
 
     var score = this.state.score,
         lines = this.state.lines,

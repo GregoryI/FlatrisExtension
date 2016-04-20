@@ -38,7 +38,8 @@ module.exports = React.createClass({
       dropFrames: constants.DROP_FRAMES_DEFAULT,
       dropAcceleration: false,
       animationLoopRunning: true,
-      disableActions: false
+      // Uncomment to have the animation while dropping
+      //disableActions: false
     };
   },
 
@@ -142,9 +143,31 @@ module.exports = React.createClass({
 
   dropTetrimino: function() {
 
-    this.setState({dropAcceleration: true})
-    this.setState({disableActions: true})
-    
+    // Uncomment to have the animation while dropping
+    // this.setState({dropAcceleration: true})
+    // this.setState({disableActions: true})
+
+    console.log(this.state.grid);
+
+    var tetriminoGrid = this.state.activeTetriminoGrid,
+        tetriminoPosition = _.clone(this.state.activeTetriminoPosition),
+        drop = {
+          cells: this.refs.activeTetrimino.getNumberOfCells(),
+          hardDrop: this.state.dropAcceleration
+        };
+
+    console.log(tetriminoPosition);
+
+    while (this._isPositionAvailableForTetriminoGrid(tetriminoGrid,
+                                                  tetriminoPosition)) {
+      tetriminoPosition.y += 1;
+    }
+
+    console.log(tetriminoPosition);
+
+    this.setState({activeTetriminoPosition: tetriminoPosition});
+
+
   },
 
   onFrame: function(frames) {
