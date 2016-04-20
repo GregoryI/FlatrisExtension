@@ -37,7 +37,8 @@ module.exports = React.createClass({
       activeTetriminoPosition: {x: 0, y: 0},
       dropFrames: constants.DROP_FRAMES_DEFAULT,
       dropAcceleration: false,
-      animationLoopRunning: true
+      animationLoopRunning: true,
+      disableActions: false
     };
   },
 
@@ -137,6 +138,13 @@ module.exports = React.createClass({
   increaseSpeed: function() {
     this.setState({dropFrames: this.state.dropFrames -
                                constants.DROP_FRAMES_DECREMENT});
+  },
+
+  dropTetrimino: function() {
+
+    this.setState({dropAcceleration: true})
+    this.setState({disableActions: true})
+    
   },
 
   onFrame: function(frames) {

@@ -144,7 +144,7 @@ class FlatrisGame extends ComponentTree.Component {
       e.preventDefault();
     }
     // Ignore user events when game is stopped or paused
-    if (!this.state.playing || this.state.paused) {
+    if (!this.state.playing || this.state.paused || this.refs.well.state.disableActions) {
       return;
     }
 
@@ -160,6 +160,9 @@ class FlatrisGame extends ComponentTree.Component {
         break;
       case constants.KEYS.RIGHT:
         this.refs.well.moveTetriminoToRight();
+        break;
+      case constants.KEYS.SPACE:
+        this.refs.well.dropTetrimino();
     }
   }
 
@@ -229,6 +232,14 @@ class FlatrisGame extends ComponentTree.Component {
     if (!this.state.playing) {
       return;
     }
+
+    // this.setState({dropAcceleration: false})
+    // this.setState({disableActions: false})
+
+    this.refs.well.setState({
+      dropAcceleration: false,
+      disableActions: false
+    });
 
     var score = this.state.score,
         lines = this.state.lines,
