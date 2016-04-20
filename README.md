@@ -1,3 +1,5 @@
+An Extension to Skidding's Flatris (link below to original repository).
+
 [![Flatris](https://cloud.githubusercontent.com/assets/250750/6101303/f1de45b4-afef-11e4-9040-7a4b99c08a7c.png)](http://skidding.github.io/flatris/)
 
 Take a trip down memory lane with one the classics and [**play some Flatris!**](http://skidding.github.io/flatris/)
